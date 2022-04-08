@@ -6,7 +6,7 @@ import { crearTodoHtml } from "./js/componentes";
 // import { TodoList } from "./classes/todo-list.class";
 
 
-const todoList = new TodoList();
+export const todoList = new TodoList();
 
 const tarea = new Todo("Aprender JavaScript");
 todoList.nuevoTodo(tarea);

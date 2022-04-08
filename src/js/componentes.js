@@ -1,7 +1,9 @@
-
+import { Todo } from "../classes"
+import { todoList } from "../index"
 
 //referencia html
 const divTodoList = document.querySelector(".todo-list");
+const txtImput = document.querySelector(".new-todo");
 
 
 export const crearTodoHtml = ( todo ) => {
@@ -9,7 +11,7 @@ export const crearTodoHtml = ( todo ) => {
     const htmlTodo = `
     <li class="${(todo.completado)?"completed":"" }"data-id="abc">
         <div class="view">
-            <input class="toggle" type="checkbox" ${(todo.completado)?"checke d":"" }>
+            <input class="toggle" type="checkbox" ${(todo.completado)?"checked":"" }>
             <label>${ todo.tarea }</label>
             <button class="destroy"></button>
         </div>
@@ -23,3 +25,17 @@ export const crearTodoHtml = ( todo ) => {
 
     return div.firstElementChild;
 }
+
+//evemtos
+txtImput.addEventListener("keyup",(event)=>{
+    if (event.keyCode === 13){
+
+        console.log(txtImput.value);
+        const nuevoTodo = new Todo(txtImput.value);
+        todoList.nuevoTodo( nuevoTodo );
+
+        crearTodoHtml(nuevoTodo);
+        txtImput.value = "";
+
+    }
+});
