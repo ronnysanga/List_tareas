@@ -39,3 +39,10 @@ txtImput.addEventListener("keyup",(event)=>{
 
     }
 });
+
+divTodoList.addEventListener("click", (Event)=>{
+    console.log("click");
+    console.log(Event.target.localName);
+
+    
+});
