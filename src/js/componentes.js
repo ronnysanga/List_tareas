@@ -9,7 +9,7 @@ const txtImput = document.querySelector(".new-todo");
 export const crearTodoHtml = ( todo ) => {
 
     const htmlTodo = `
-    <li class="${(todo.completado)?"completed":"" }"data-id="abc">
+    <li class="${(todo.completado)?"completed":"" }"data-id="${todo.id}">
         <div class="view">
             <input class="toggle" type="checkbox" ${(todo.completado)?"checked":"" }>
             <label>${ todo.tarea }</label>
@@ -41,8 +41,17 @@ txtImput.addEventListener("keyup",(event)=>{
 });
 
 divTodoList.addEventListener("click", (Event)=>{
-    console.log("click");
-    console.log(Event.target.localName);
-
     
+    const nombreElemento = Event.target.localName;//input,label,button
+    const todoElemento = Event.target.parentElement.parentElement;
+    const todoId = todoElemento.getAttribute("data-id")
+
+    if ( nombreElemento.includes("input")){
+        todoList.marcarCompletado(todoId);
+        todoElemento.classList.toggle("completed");
+    }
+
+    console.log(todoList)
+
+
 });
